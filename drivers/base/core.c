@@ -1746,6 +1746,10 @@ void device_shutdown(void)
 		/* Disable all device's runtime power management */
 		pm_runtime_disable(dev);
 
+		/* Don't allow any more runtime suspends */
+		pm_runtime_get_noresume(dev);
+		pm_runtime_barrier(dev);
+
 		if (dev->bus && dev->bus->shutdown) {
 			dev_dbg(dev, "shutdown\n");
 			dev->bus->shutdown(dev);

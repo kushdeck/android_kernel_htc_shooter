@@ -554,7 +554,12 @@ xfs_readlink(
 			 __func__, (unsigned long long) ip->i_ino,
 			 (long long) pathlen);
 		ASSERT(0);
+<<<<<<< HEAD
 		return XFS_ERROR(EFSCORRUPTED);
+=======
+		error = XFS_ERROR(EFSCORRUPTED);
+		goto out;
+>>>>>>> e62e8d9... Linux: update to Linux 3.0.44
 	}
 
 
